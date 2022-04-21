@@ -80,8 +80,8 @@ def reset():
     root.txtCheckin.delete(0,END)
     root.txtCheckout.delete(0,END)
 
-    DateIn.set(time.strftime("%d/%m/%"))
-    DateOut.set(time.strftime("%d/%m/%y"))
+    DateIn.set(time.strftime("%d/%m/%Y"))
+    DateOut.set(time.strftime("%d/%m/%Y"))
 
     rand = random.randint(1190, 8000)
     randomReference = str(rand)
@@ -147,9 +147,9 @@ def records():
 def totalcostadddata():
     InDate = DateIn.get() 
     OutDate = DateOut.get()
-    Indate = datetime.strptime(InDate, "%d/%m/%y")
-    Outdate = datetime.strptime(OutDate, "%d/%m/%y")
-    TotalDays.set(abs((OutDate - InDate).days))
+    Indate = datetime.strptime(InDate, "%d/%m/%Y")
+    Outdate = datetime.strptime(OutDate, "%d/%m/%Y")
+    TotalDays.set(abs((Outdate - Indate).days))
 
 
 #=======================================LEFT WIDGETS==================================================
