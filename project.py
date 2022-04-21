@@ -245,6 +245,4 @@ root.btnExit = Button(BottomFrame, bd=4, font=('arial', 16,'bold'),
 width=13, height=2, text='Exit', command=iExit).grid(row=0, column=6, padx =4,  pady=1)
 
 
-
-
 root.mainloop()
