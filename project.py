@@ -56,8 +56,8 @@ DateIn = StringVar()
 DateOut = StringVar()
 TotalDays = StringVar()
 
-DateIn.set(time.strftime("%d/%m/%y"))
-DateIn.set(time.strftime("%d/%m/%y"))
+DateIn.set(time.strftime("%d/%m/%Y"))
+DateOut.set(time.strftime("%d/%m/%Y"))
 
 rand = random.randint(1190, 8000)
 randomReference = str(rand)
