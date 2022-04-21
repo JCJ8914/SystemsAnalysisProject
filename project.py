@@ -1,6 +1,7 @@
 from cgitb import reset
 from ctypes.wintypes import HDC
 from email.headerregistry import Address
+from inspect import EndOfBlock
 from sqlite3 import Date
 from tkinter import*
 import tkinter.messagebox
@@ -42,6 +43,7 @@ BottomFrame.pack(side=BOTTOM)
 
 global cd
 
+TableID = StringVar()
 CusID = StringVar()
 FirstName = StringVar()
 LastName = StringVar()
@@ -72,6 +74,7 @@ def iExit():
 
 def reset():
 
+    # root.txtID.delete(0,END)
     root.txtCusID.delete(0,END)
     root.txtFirstname.delete(0,END)
     root.txtSurname.delete(0,END)
@@ -97,7 +100,7 @@ def add():
 
 def delete():
     if(len(CusID.get()) != 0):
-        backend.deleteData(cd[0])
+        backend.deleteData(cd[1])
         reset()
         display()
 
@@ -110,7 +113,7 @@ def display():
 def search():
 
     lstReso.delete(0,END)
-    for row in backend.searchData(CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()):
+    for row in backend.searchData(TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()):
         lstReso.insert(END, row, str(""))
 
 def update():
@@ -118,9 +121,9 @@ def update():
     if(len(CusID.get()) != 0):
         backend.deleteData(cd[0])
     if(len(CusID.get()) != 0):
-        backend.addData(CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get())
+        backend.addData(TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get())
         lstReso.delete(0,END)
-        lstReso.insert(END, (CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
+        lstReso.insert(END, (TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
 
 def records():
 
@@ -128,25 +131,27 @@ def records():
     searchcdb = lstReso.curselection() [0]
     cd = lstReso.get(searchcdb)
 
+    # root.txtID.delete(0,END)
+    # root.txtID.insert(END,cd[1])
     root.txtCusID.delete(0,END)
-    root.txtCusID.insert(END,cd[1])
+    root.txtCusID.insert(END,cd[2])
     root.txtFirstname.delete(0,END)
-    root.txtFirstname.insert(END,cd[2])
+    root.txtFirstname.insert(END,cd[3])
     root.txtSurname.delete(0,END)
-    root.txtSurname.insert(END,cd[3])
+    root.txtSurname.insert(END,cd[4])
     root.txtContact.delete(0,END)
-    root.txtContact.insert(END,cd[4])
+    root.txtContact.insert(END,cd[5])
     root.txtAddress.delete(0,END)
-    root.txtAddress.insert(END,cd[5])
+    root.txtAddress.insert(END,cd[6])
     root.txtRoom.delete(0,END)
-    root.txtRoom.insert(END,cd[6])
+    root.txtRoom.insert(END,cd[7])
     root.txtCheckin.delete(0,END)
-    root.txtCheckin.insert(END,cd[7])
+    root.txtCheckin.insert(END,cd[8])
     root.txtCheckout.delete(0,END)
-    root.txtCheckout.insert(END,cd[8])
+    root.txtCheckout.insert(END,cd[9])
 
 def totalcostadddata():
-    
+
     add()
 
     InDate = DateIn.get() 
@@ -159,45 +164,50 @@ def totalcostadddata():
 
 
 #=======================================LEFT WIDGETS==================================================
+# root.lblID = Label(LeftFrame, font=('arial', 12,'bold'), text="ID:", padx=1)
+# root.lblID.grid(row=0, column=0, sticky =W)
+# root.txtID =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=TableID)
+# root.txtID.grid(row=0, column=1, pady=3, padx=20)
+
 root.lblCusID = Label(LeftFrame, font=('arial', 12,'bold'), text="Customer No:", padx=1)
-root.lblCusID.grid(row=0, column=0, sticky =W)
+root.lblCusID.grid(row=1, column=0, sticky =W)
 root.txtCusID =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=CusID)
-root.txtCusID.grid(row=0, column=1, pady=3, padx=20)
+root.txtCusID.grid(row=1, column=1, pady=3, padx=20)
 
 root.lblFirstname = Label(LeftFrame, font=('arial', 12,'bold'), text="First Name:", padx=1)
-root.lblFirstname.grid(row=1, column=0, sticky =W)
+root.lblFirstname.grid(row=2, column=0, sticky =W)
 root.txtFirstname =Entry(LeftFrame, font=('arial',12,'bold',) ,width =18, textvariable=FirstName)
-root.txtFirstname.grid(row=1, column=1, pady=3, padx=20)
+root.txtFirstname.grid(row=2, column=1, pady=3, padx=20)
 
 root.lblSurname = Label(LeftFrame, font=('arial', 12,'bold'), text="Surname:", padx=1)
-root.lblSurname.grid(row=2, column=0, sticky =W)
+root.lblSurname.grid(row=3, column=0, sticky =W)
 root.txtSurname =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=LastName)
-root.txtSurname.grid(row=2, column=1, pady=3, padx=20)
+root.txtSurname.grid(row=3, column=1, pady=3, padx=20)
 
 root.lblContact = Label(LeftFrame, font=('arial', 12,'bold'), text="Contact No:", padx=1)
-root.lblContact.grid(row=3, column=0, sticky =W)
+root.lblContact.grid(row=4, column=0, sticky =W)
 root.txtContact =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=Contact)
-root.txtContact.grid(row=3, column=1, pady=3, padx=20)
+root.txtContact.grid(row=4, column=1, pady=3, padx=20)
 
 root.lblAddress = Label(LeftFrame, font=('arial', 12,'bold'), text="Address:", padx=1)
-root.lblAddress.grid(row=4, column=0, sticky =W)
+root.lblAddress.grid(row=5, column=0, sticky =W)
 root.txtAddress =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=CusAddress)
-root.txtAddress.grid(row=4, column=1, pady=3, padx=20)
+root.txtAddress.grid(row=5, column=1, pady=3, padx=20)
 
 root.lblRoom = Label(LeftFrame, font=('arial', 12,'bold'), text="Room No:", padx=1)
-root.lblRoom.grid(row=5, column=0, sticky =W)
+root.lblRoom.grid(row=6, column=0, sticky =W)
 root.txtRoom =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=Room)
-root.txtRoom.grid(row=5, column=1, pady=3, padx=20)
+root.txtRoom.grid(row=6, column=1, pady=3, padx=20)
 
 root.lblCheckin = Label(LeftFrame, font=('arial', 12,'bold'), text="Check In Date:", padx=1)
-root.lblCheckin.grid(row=6, column=0, sticky =W)
+root.lblCheckin.grid(row=7, column=0, sticky =W)
 root.txtCheckin =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=DateIn)
-root.txtCheckin.grid(row=6, column=1, pady=3, padx=20)
+root.txtCheckin.grid(row=7, column=1, pady=3, padx=20)
 
 root.lblCheckout = Label(LeftFrame, font=('arial', 12,'bold'), text="Check Out Date:", padx=1)
-root.lblCheckout.grid(row=7, column=0, sticky =W)
+root.lblCheckout.grid(row=8, column=0, sticky =W)
 root.txtCheckout =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=DateOut)
-root.txtCheckout.grid(row=7, column=1, pady=3, padx=20)
+root.txtCheckout.grid(row=8, column=1, pady=3, padx=20)
 
 #=======================================RIGHT WIDGETS==================================================
 root.lblLabel = Label(RightFrame1, font=('arial', 9,'bold'), padx=6, pady=10, text="Customer No\tFirstname\t Surname \t Contact No \t Address \t Room Num \tCheck In Date\t Check Out Date")
