@@ -41,6 +41,7 @@ BottomFrame = Frame(MainFrame, bd=10, width=1350, height=150, padx=2, relief=RID
 BottomFrame.pack(side=BOTTOM)
 
 global cd
+
 CusID = StringVar()
 FirstName = StringVar()
 LastName = StringVar()
@@ -150,6 +151,8 @@ def totalcostadddata():
     Indate = datetime.strptime(InDate, "%d/%m/%Y")
     Outdate = datetime.strptime(OutDate, "%d/%m/%Y")
     TotalDays.set(abs((Outdate - Indate).days))
+
+    
 
 
 #=======================================LEFT WIDGETS==================================================
