@@ -1,6 +1,11 @@
+from email.headerregistry import Address
 from tkinter import*
-
+import time
+import datetime
 from numpy import pad
+import random
+
+import backend
 
 root = Tk()
 
@@ -28,10 +33,34 @@ RightFrame3.grid(row=3, column=0)
 BottomFrame = Frame(MainFrame, bd=10, width=1350, height=150, padx=2, relief=RIDGE)
 BottomFrame.pack(side=BOTTOM)
 
+global cd
+CusID = StringVar()
+FirstName = StringVar()
+LastName = StringVar()
+Contact = StringVar()
+CusAddress = StringVar()
+Room = StringVar()
+
+NoOfDays = StringVar()
+SubTotal = StringVar()
+PaidTax = StringVar()
+
+DateIn = StringVar()
+DateOut = StringVar()
+
+DateIn.set(time.strftime("%d/%m/%y"))
+DateIn.set(time.strftime("%d/%m/%y"))
+
+rand = random.randint(1190, 8000)
+randomReference = str(rand)
+CusID.set(randomReference)
+
+
+
 #=======================================LEFT WIDGETS==================================================
 root.lblCusID = Label(LeftFrame, font=('arial', 12,'bold'), text="Customer No:", padx=1)
 root.lblCusID.grid(row=0, column=0, sticky =W)
-root.txtCusID =Entry(LeftFrame, font=('arial',12,'bold') ,width =18)
+root.txtCusID =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=CusID)
 root.txtCusID.grid(row=0, column=1, pady=3, padx=20)
 
 root.lblFirstname = Label(LeftFrame, font=('arial', 12,'bold'), text="First Name:", padx=1)
@@ -61,12 +90,12 @@ root.txtRoom.grid(row=5, column=1, pady=3, padx=20)
 
 root.lblCheckin = Label(LeftFrame, font=('arial', 12,'bold'), text="Check In Date:", padx=1)
 root.lblCheckin.grid(row=6, column=0, sticky =W)
-root.txtCheckin =Entry(LeftFrame, font=('arial',12,'bold') ,width =18)
+root.txtCheckin =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=DateIn)
 root.txtCheckin.grid(row=6, column=1, pady=3, padx=20)
 
 root.lblCheckout = Label(LeftFrame, font=('arial', 12,'bold'), text="Check Out Date:", padx=1)
 root.lblCheckout.grid(row=7, column=0, sticky =W)
-root.txtCheckout =Entry(LeftFrame, font=('arial',12,'bold') ,width =18)
+root.txtCheckout =Entry(LeftFrame, font=('arial',12,'bold') ,width =18, textvariable=DateOut)
 root.txtCheckout.grid(row=7, column=1, pady=3, padx=20)
 
 #=======================================RIGHT WIDGETS==================================================
