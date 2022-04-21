@@ -11,7 +11,7 @@ def clientData():
 def addData(CusNo, CusFirstName, CusLastName, CusContact, CusAddress, CusRoom, CusInDate, CusOutDate):
     communication = sqlite3.connect("resort_client.db")
     cur = communication.cursor()
-    cur.execute("INSERT INTO VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)", (CusNo, CusFirstName, CusLastName, CusContact, CusAddress, CusRoom, CusInDate, CusOutDate))
+    cur.execute("INSERT INTO client_data VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)", (CusNo, CusFirstName, CusLastName, CusContact, CusAddress, CusRoom, CusInDate, CusOutDate))
 
     communication.commit()
     communication.close()
