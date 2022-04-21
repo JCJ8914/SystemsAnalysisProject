@@ -28,7 +28,7 @@ def viewData():
 def deleteData(id):
     communication = sqlite3.connect("resort_client.db")
     cur = communication.cursor()
-    cur.execute("DELETE FROM WHERE CusNo = ?", (id,))
+    cur.execute("DELETE FROM client_data WHERE CusNo = ?", (id,))
 
     rows = cur.fetchall
     communication.close
