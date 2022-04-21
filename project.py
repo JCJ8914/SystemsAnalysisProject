@@ -80,8 +80,8 @@ def reset():
     root.txtCheckin.delete(0,END)
     root.txtCheckout.delete(0,END)
 
-    DateIn.set(time.strftime("%d/%m/%y"))
-    DateIn.set(time.strftime("%d/%m/%y"))
+    DateIn.set(time.strftime("%d/%m/%"))
+    DateOut.set(time.strftime("%d/%m/%y"))
 
     rand = random.randint(1190, 8000)
     randomReference = str(rand)
