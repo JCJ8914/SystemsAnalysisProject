@@ -6,6 +6,7 @@ from tkinter import*
 import tkinter.messagebox
 import time
 import datetime
+from datetime import datetime
 import tkinter
 from turtle import back
 from numpy import pad
