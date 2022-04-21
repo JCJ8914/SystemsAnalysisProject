@@ -146,6 +146,9 @@ def records():
     root.txtCheckout.insert(END,cd[8])
 
 def totalcostadddata():
+    
+    add()
+
     InDate = DateIn.get() 
     OutDate = DateOut.get()
     Indate = datetime.strptime(InDate, "%d/%m/%Y")
