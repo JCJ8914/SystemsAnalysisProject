@@ -99,12 +99,17 @@ def add():
         lstReso.insert(END, (CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
 
 def delete():
+
+    global cd
+
     if(len(CusID.get()) != 0):
-        backend.deleteData(cd[1])
+        backend.deleteData(cd[0])
         reset()
         display()
 
 def display():
+
+    global cd
 
     lstReso.delete(0,END)
     for row in backend.viewData():
@@ -112,18 +117,28 @@ def display():
 
 def search():
 
+    global cd
+
     lstReso.delete(0,END)
     for row in backend.searchData(TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()):
         lstReso.insert(END, row, str(""))
 
 def update():
 
+    # if(len(CusID.get()) != 0):
+    #     backend.deleteData(cd[0])
+    # if(len(CusID.get()) != 0):
+    #     backend.updateData(TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get())
+    #     lstReso.delete(0,END)
+    #     lstReso.insert(END, (TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
+
+    global cd
+
     if(len(CusID.get()) != 0):
-        backend.deleteData(cd[0])
-    if(len(CusID.get()) != 0):
-        backend.addData(TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get())
+        # backend.deleteData(cd[0])
+        backend.addData(TableID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get())
         lstReso.delete(0,END)
-        lstReso.insert(END, (TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
+        lstReso.insert(END, (TableID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
 
 def records():
 
@@ -159,8 +174,6 @@ def totalcostadddata():
     Indate = datetime.strptime(InDate, "%d/%m/%Y")
     Outdate = datetime.strptime(OutDate, "%d/%m/%Y")
     TotalDays.set(abs((Outdate - Indate).days))
-
-    
 
 
 #=======================================LEFT WIDGETS==================================================
@@ -246,7 +259,7 @@ root.btnUpdate = Button(BottomFrame, bd=4, font=('arial', 16,'bold'),
 width=13, height=2, text='Update', command=update).grid(row=0, column=2, padx =4,  pady=1)
 
 root.btnDelete = Button(BottomFrame, bd=4, font=('arial', 16,'bold'),
-width=13, height=2, text='Delete', command=delete).grid(row=0, column=3, padx =4,  pady=1)
+width=13, height=2, text='Delete Entry', command=delete).grid(row=0, column=3, padx =4,  pady=1)
 
 root.btnSearch = Button(BottomFrame, bd=4, font=('arial', 16,'bold'),
 width=13, height=2, text='Search', command=search).grid(row=0, column=4, padx =4,  pady=1)
