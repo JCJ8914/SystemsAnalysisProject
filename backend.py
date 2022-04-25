@@ -25,13 +25,14 @@ def viewData():
     communication.close()
     return rows
 
-def deleteData(id):
+def deleteData(id,  CusNo="", CusFirstName="", CusLastName="", CusContact="", CusAddress="", CusRoom="", CusInDate="", CusOutDate=""):
     communication = sqlite3.connect("resort_client.db")
     cur = communication.cursor()
-    cur.execute("DELETE FROM client_data WHERE CusNo = ?", (id,))
+    cur.execute("DELETE FROM client_data WHERE CusNo = ?, CusFirstName=? OR CusLastName=? OR CusContact=? OR CusAddress=? OR CusRoom=? OR CusInDate? OR CusOutDate=?", (id,CusNo, CusFirstName, CusLastName, CusContact, CusAddress, CusRoom, CusInDate, CusOutDate))
 
     rows = cur.fetchall()
     communication.close()
+
     return rows
 
 def searchData(ID="", CusFirstName="", CusLastName="", CusContact="", CusAddress="", CusRoom="", CusInDate="", CusOutDate=""):
