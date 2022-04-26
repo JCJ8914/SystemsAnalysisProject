@@ -231,7 +231,7 @@ root.lblLabel.grid(row=0, column=0, columnspan=17)
 scrollbar= Scrollbar(RightFrame2)
 scrollbar.grid(row=0, column=0,sticky='ns')
 lstReso = Listbox(RightFrame2, width=103, height=14, font=('arial', 9, 'bold'), yscrollcommand= scrollbar.set)
-lstReso.bind('<<ListboxSelct>>', records())
+lstReso.bind('<<ListboxSelct>>', records)
 lstReso.grid(row=0, column=0, padx=7, sticky= 'nsew')
 scrollbar.config(command = lstReso.xview)
 #=======================================RIGHT WIDGETS==================================================
