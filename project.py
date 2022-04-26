@@ -144,27 +144,6 @@ def update():
 
 def records():
 
-    # global cd
-    # searchcdb = lstReso.curselection() [0]
-    # cd = lstReso.get(searchcdb)
-
-    # root.txtCusID.delete(0,END)
-    # root.txtCusID.insert(END,cd[0])
-    # root.txtFirstname.delete(0,END)
-    # root.txtFirstname.insert(END,cd[1])
-    # root.txtSurname.delete(0,END)
-    # root.txtSurname.insert(END,cd[2])
-    # root.txtContact.delete(0,END)
-    # root.txtContact.insert(END,cd[3])
-    # root.txtAddress.delete(0,END)
-    # root.txtAddress.insert(END,cd[4])
-    # root.txtRoom.delete(0,END)
-    # root.txtRoom.insert(END,cd[5])
-    # root.txtCheckin.delete(0,END)
-    # root.txtCheckin.insert(END,cd[6])
-    # root.txtCheckout.delete(0,END)
-    # root.txtCheckout.insert(END,cd[7])
-
     global cd
     searchcdb = lstReso.curselection() [0]
     cd = lstReso.get(searchcdb)
