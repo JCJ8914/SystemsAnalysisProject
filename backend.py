@@ -4,7 +4,8 @@ import sqlite3
 def clientData():
     communication = sqlite3.connect("resort_client.db")
     cur = communication.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS client_data (id INTEGER AUTO_INCREMENT PRIMARY KEY, CusNo text, CusFirstName text, CusLastName text, CusContact text, CusAddress text, CusRoom text, CusInDate text, CusOutDate text)")
+    cur.execute("CREATE TABLE IF NOT EXISTS client_data (CusNo INTEGER PRIMARY KEY, CusFirstName text, CusLastName text, CusContact text, CusAddress text, CusRoom text, CusInDate text, CusOutDate text)")
+    # cur.execute("DROP TABLE client_data")
     communication.commit()
     communication.close()
 

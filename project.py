@@ -100,12 +100,12 @@ def add():
 
 def delete():
 
-    global cd
-
     if(len(CusID.get()) != 0):
         backend.deleteData(cd[0])
+        print("Delete button pressed.")
         reset()
         display()
+
 
 def display():
 
@@ -133,14 +133,37 @@ def update():
     #     lstReso.insert(END, (TableID.get(), CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
 
     global cd
+    searchcdb = lstReso.curselection() [0]
+    cd = lstReso.get(searchcdb)
 
     if(len(CusID.get()) != 0):
         # backend.deleteData(cd[0])
-        backend.addData(TableID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get())
+        backend.addData(CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get())
         lstReso.delete(0,END)
-        lstReso.insert(END, (TableID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
+        lstReso.insert(END, (CusID.get(), FirstName.get(), LastName.get(), Contact.get(), CusAddress.get(), Room.get(), DateIn.get(), DateOut.get()))
 
 def records():
+
+    # global cd
+    # searchcdb = lstReso.curselection() [0]
+    # cd = lstReso.get(searchcdb)
+
+    # root.txtCusID.delete(0,END)
+    # root.txtCusID.insert(END,cd[0])
+    # root.txtFirstname.delete(0,END)
+    # root.txtFirstname.insert(END,cd[1])
+    # root.txtSurname.delete(0,END)
+    # root.txtSurname.insert(END,cd[2])
+    # root.txtContact.delete(0,END)
+    # root.txtContact.insert(END,cd[3])
+    # root.txtAddress.delete(0,END)
+    # root.txtAddress.insert(END,cd[4])
+    # root.txtRoom.delete(0,END)
+    # root.txtRoom.insert(END,cd[5])
+    # root.txtCheckin.delete(0,END)
+    # root.txtCheckin.insert(END,cd[6])
+    # root.txtCheckout.delete(0,END)
+    # root.txtCheckout.insert(END,cd[7])
 
     global cd
     searchcdb = lstReso.curselection() [0]
@@ -149,21 +172,21 @@ def records():
     # root.txtID.delete(0,END)
     # root.txtID.insert(END,cd[1])
     root.txtCusID.delete(0,END)
-    root.txtCusID.insert(END,cd[1])
+    root.txtCusID.insert(END,cd[0])
     root.txtFirstname.delete(0,END)
-    root.txtFirstname.insert(END,cd[2])
+    root.txtFirstname.insert(END,cd[1])
     root.txtSurname.delete(0,END)
-    root.txtSurname.insert(END,cd[3])
+    root.txtSurname.insert(END,cd[2])
     root.txtContact.delete(0,END)
-    root.txtContact.insert(END,cd[4])
+    root.txtContact.insert(END,cd[3])
     root.txtAddress.delete(0,END)
-    root.txtAddress.insert(END,cd[5])
+    root.txtAddress.insert(END,cd[4])
     root.txtRoom.delete(0,END)
-    root.txtRoom.insert(END,cd[6])
+    root.txtRoom.insert(END,cd[5])
     root.txtCheckin.delete(0,END)
-    root.txtCheckin.insert(END,cd[7])
+    root.txtCheckin.insert(END,cd[6])
     root.txtCheckout.delete(0,END)
-    root.txtCheckout.insert(END,cd[8])
+    root.txtCheckout.insert(END,cd[7])
 
 def totalcostadddata():
 
